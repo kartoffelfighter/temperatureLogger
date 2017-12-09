@@ -10,10 +10,15 @@ if(sendValue(0x00, 20, 100, 0x00)){
 */
 
 
-bool sendValue(int action, int valueTemp, int valueHumid, int comment){
+bool sendValue(int action, float valueTemp, float valueHumid, int comment){
   String payload; // recieved Value from json library
   HTTPClient http;
 
+  valueTemp = valueTemp*1000;
+  valueHumid = valueHumid*1000;
+
+  long dbTemp = (long)valueTemp;
+  long dbHumid = (long)valueHumid;
   //String action = itoa(action, HEX);
   char hexTemp[4], hexHumid[4], hexComment[4];
   //sprintf(hexTemp,"%0x", valueTemp);
@@ -33,9 +38,9 @@ bool sendValue(int action, int valueTemp, int valueHumid, int comment){
       url += "writeValue&data={\"sensid\":\"";
       url += SENSID;
       url += "\",\"temp\":\"";
-      url += String(valueTemp, HEX);
+      url += String(dbTemp, HEX);
       url += "\",\"humid\":\"";
-      url += String(valueHumid, HEX);
+      url += String(dbHumid, HEX);
       url += "\",\"comment\":\"0x00\"}";   // comment will be the error handler in future
     break;
   }
@@ -50,9 +55,84 @@ bool sendValue(int action, int valueTemp, int valueHumid, int comment){
     if(httpCode == 200){
       payload = http.getString();
       Serial.println("Recieved HTTP CODE 200");
-      Serial.print("Recieved payload: ");
+      Serial.print("Decoding payload (raw): ");
       Serial.println(payload);
+      DynamicJsonBuffer jsonBuffer;   // Safe Buffer Space for Arduino JSON
+
+      JsonObject& returned = jsonBuffer.parseObject(payload);
+      String success = returned["success"];
+      if(success == "true"){
+        Serial.println("Successfully send value to Server!");
+          return true;
+      }
+      else {
+        return false;
+      }
     }
   }
-  return true;
+}
+
+
+void alive() {
+  Serial.println("5 minutes passed, see my information ");
+  Serial.print("IP-Adress: ");
+  Serial.println(WiFi.localIP());
+  Serial.print("Runtime: ");
+  Serial.print(millis()/1000/60);
+  Serial.println(" min");
+  Serial.println("API Connection last renewed and time updated: ");
+  Serial.print(hour(lastRenew));  Serial.print(":"); Serial.print(minute(lastRenew)); Serial.print(":"); Serial.print(second(lastRenew)); Serial.print(" @ "); Serial.print(day(lastRenew)); Serial.print("."); Serial.print(month(lastRenew)); Serial.print("."); Serial.println(year(lastRenew));
+  Serial.println(".............................");
+  Serial.print("Current time (unix): ");
+  Serial.println(now());
+  Serial.print("Human Readable: ");
+  Serial.print(hour(now()));
+  Serial.print(":");
+  Serial.print(minute(now()));
+  Serial.print(":");
+  Serial.print(second(now()));
+  Serial.print(" Day: ");
+  Serial.print(day(now()));
+  Serial.print(".");
+  Serial.print(month(now()));
+  Serial.print(".");
+  Serial.print(year(now()));
+  Serial.println(" !");
+
+}
+
+
+void measure() {
+  //Serial.println("measure called");
+  humidity = dht.getHumidity();
+  temperature = dht.getTemperature();
+}
+
+void sample() {
+  float tempTemp = 0;
+  float tempHumid = 0;
+  int iSample = 0;
+  millisBeginnSampling = millis();
+  int millisSamplingRate = 0;
+  while(millis() <= millisBeginnSampling + SAMPLES*1000){
+    if(millis() >= millisSamplingRate + SAMPLE_RATE*1000){
+      measure();
+      tempTemp += temperature;
+      tempHumid += humidity;
+      iSample++;
+      Serial.print("Sample nb. ");
+      Serial.println(iSample, HEX);
+      delay(100);
+    }
+  }
+  tempSample = tempTemp/iSample;
+  humidSample = tempHumid/iSample;
+  Serial.println("Sampled some temp and humid values");
+  Serial.print("Temp: ");
+  Serial.print(tempSample);
+  Serial.println("°C");
+  Serial.print("humid: ");
+  Serial.print(humidSample);
+  Serial.println("%");
+
 }
