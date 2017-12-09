@@ -13,3 +13,6 @@
 #define LCD_D6 0
 #define LCD_D7 4
 #endif
+
+
+#define DHT_DATA_PIN 16
