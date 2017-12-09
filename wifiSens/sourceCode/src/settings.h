@@ -1,7 +1,7 @@
 #define LCD_Enabled false
 
-#define SSID "Volks.Funk"
-#define WiFiPass "ungueltigeeingabe"
+#define SSID ""
+#define WiFiPass ""
 
 #define GMTplus 1 // time adjust plus the GMT in h
 #define GMTmius 0 // time adjust minus the GMT in h
