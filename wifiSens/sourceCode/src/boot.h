@@ -70,6 +70,39 @@ if(!booted){
       Serial.println("Recieved HTTP CODE 200");
       Serial.print("Recieved payload: ");
       Serial.println(payload);
+      Serial.println("decode payload");
+      DynamicJsonBuffer jsonBuffer;   // Safe Buffer Space for Arduino JSON
+
+      JsonObject& returned = jsonBuffer.parseObject(payload);
+      String success = returned["success"];
+      String rTime = returned["time"];
+      long longTime = rTime.toInt();
+      if(success == "true"){
+        Serial.println("Server Connection established!");
+        serverConnection = true;
+      }
+      delay(20);  // short delay, the serial console won't show correctly
+      Serial.print("Servertime: ");
+      Serial.println(longTime);
+      time_t t = longTime;
+      setTime(t);
+      Serial.print("adjusted local time to: ");
+      Serial.println(now());
+      Serial.print("In fact, this is: ");
+      Serial.print(hour(now()));
+      Serial.print(":");
+      Serial.print(minute(now()));
+      Serial.print(":");
+      Serial.print(second(now()));
+      Serial.print(" on ");
+      Serial.print(day(now()));
+      Serial.print(".");
+      Serial.print(month(now()));
+      Serial.print(".");
+      Serial.print(year(now()));
+      Serial.println(" !");
+
+
     }
   }
 
