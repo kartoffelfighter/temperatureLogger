@@ -83,7 +83,7 @@ function curl_get($url, array $get = NULL, array $options = array())
                   echo "<h3>".$i . " Werte für " . $sensorNames[hexdec($gets["sens"])] . "  &nbsp;&nbsp;<small><code>ID:".$gets["sens"]."</code></small> </h3>";
                   $i = count($sens["data"]);
                   echo "<table class='table table-dark'><thead><tr><td></td></tr></thead><tbody>";
-                  echo "<b><tr><td>Sensor</td><td>Temperatur</td><td>Feuchtigkeit</td><td>Datum</td><td>Kommentar</td></tr></b>";
+                  echo "<b><tr><td>Messung</td><td>Temperatur</td><td>Feuchtigkeit</td><td>Datum</td><td>Kommentar</td></tr></b>";
                   for($ii = 0; $ii <= $i-1; $ii++){
                     echo "<tr>";
                     echo "<td>";
