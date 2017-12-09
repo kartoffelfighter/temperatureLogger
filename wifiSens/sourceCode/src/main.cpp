@@ -2,6 +2,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>    // http client
 #include <ArduinoJson.h>      // JSON Library
+#include <TimeLib.h>
 
 #include "settings.h"  //settings file
 #include "lang.h"   // language File
@@ -19,13 +20,15 @@
 
 
 void setup() {
+    Serial.begin(115200);
+
     // ignore setup, booting script running at loop
 }
 
 void loop() {
 boot();   // call boot script to test system and establish wifi connection etc. can be recalled, if bool booted is set to false
 Serial.println("Connection to API: ");
-Serial.println(serverConnection);
+Serial.println(serverConnection, bool);
 Serial.println("loop");
 delay(500);
 if(millis() % 10000 == 0){
