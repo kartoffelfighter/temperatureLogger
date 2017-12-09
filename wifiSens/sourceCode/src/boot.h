@@ -86,6 +86,7 @@ if(!booted){
       Serial.println(longTime);
       time_t t = longTime;
       setTime(t);
+      adjustTime(GMTplus*60*60);
       Serial.print("adjusted local time to: ");
       Serial.println(now());
       Serial.print("In fact, this is: ");
@@ -102,6 +103,7 @@ if(!booted){
       Serial.print(year(now()));
       Serial.println(" !");
 
+      lastRenew = longTime;
 
     }
   }
