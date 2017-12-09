@@ -90,10 +90,10 @@ function curl_get($url, array $get = NULL, array $options = array())
                     echo $sens["data"][$ii]["id"];
                     echo "</td>";
                     echo "<td>";
-                    echo hexdec($sens["data"][$ii]["temp"]) . "°C";
+                    echo hexdec($sens["data"][$ii]["temp"])/1000 . "°C";    // devide by 1000 (float in arduino!!)
                     echo "</td>";
                     echo "<td>";
-                    echo hexdec($sens["data"][$ii]["humid"]) . "%";
+                    echo hexdec($sens["data"][$ii]["humid"])/1000 . "%";      // devide by 1000 (float in arduino!!)
                     echo "</td>";
                     echo "<td>";
                     echo date("D, d.m.Y - H:i:s", $sens["data"][$ii]["time"]);
