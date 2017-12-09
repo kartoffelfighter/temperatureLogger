@@ -10,8 +10,8 @@
 #define SERVER_PORT 1337
 #define SERVER_BASE_URL "/temperatureLogger/html/api.php"
 
+#define SENSID "0x001"
 
-
+#define INTERVALL 1   // time in minuts between two measures
 
 // global integers
-int serverTime = 0;
