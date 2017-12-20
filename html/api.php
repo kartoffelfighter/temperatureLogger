@@ -291,7 +291,7 @@ function writeValue($data){    // json-string input with (sensID => 0x00; temp =
   $data = json_decode($data);
   //var_dump($data);
   //var_dump(date("U"));
-  if($mysqllink->query("INSERT INTO `sens`(`sensor`,`temp`,`humid`, `time`, `comment` ) VALUES ( '".$data->sensid."', '".$data->temp."', '".$data->humid."', '".date("U")."', '".$data->comment."' )"))    {
+  if($mysqllink->query("INSERT INTO `sens`(`sensor`,`temp`,`humid`, `time`, `comment`, `accu` ) VALUES ( '".$data->sensid."', '".$data->temp."', '".$data->humid."', '".date("U")."', '".$data->comment."', '".$data->accu."' )"))    {
   $return['success'] = "true";    // prepare success string
   return json_encode($return);    // return success string
 }
