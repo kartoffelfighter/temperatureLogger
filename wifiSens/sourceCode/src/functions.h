@@ -10,17 +10,19 @@ if(sendValue(0x00, 20, 100, 0x00)){
 */
 
 
-bool sendValue(int action, float valueTemp, float valueHumid, int comment){
+bool sendValue(int action, float valueTemp, float valueHumid, int comment, float valueAccu){
   String payload; // recieved Value from json library
   HTTPClient http;
 
-  valueTemp = valueTemp*1000;
-  valueHumid = valueHumid*1000;
+  valueTemp = (valueTemp+OFFSET)*1000;
+  valueHumid = (valueHumid)*1000;
+  valueAccu = (valueAccu);
 
   long dbTemp = (long)valueTemp;
   long dbHumid = (long)valueHumid;
+  long dbAccu = (long)valueAccu;
   //String action = itoa(action, HEX);
-  char hexTemp[4], hexHumid[4], hexComment[4];
+  String hexcomment;
   //sprintf(hexTemp,"%0x", valueTemp);
   //sprintf(hexHumid,"%0x", valueHumid);
   //sprintf(hexComment,"%0x", comment);
