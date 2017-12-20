@@ -2,17 +2,30 @@
 
 // NodeMCU 1.0
 
-//const int rs = 13, en = 12, d4 = 14, d5 = 2, d6 = 0, d7 = 4;
 
+#define ADC A0
+#define DHT_DATA_PIN 5 //NodeMCU: D1
 
-#if(LCD_Enabled)
-#define LCD_RS 13
-#define LCD_EN 12
-#define LCD_D4 14
-#define LCD_D5 2
-#define LCD_D6 0
-#define LCD_D7 4
-#endif
+#define WakeUp 16 // NodeMCU: D0
+#define BUTTON 0 // NodeMCU: D3
 
-
-#define DHT_DATA_PIN 16
+/*
+ Different pin configs:                                      _________________
+ || used as | Arduino IDE (identical to esp8266)|| NodeMCU ||O--------------O|| NodeMCU | Arduino IDE (identical to esp8266)|| used as ||
+ || ADC     | A0                                || A0      ||||+          +|||| D0      | 16                                || WakueUp ||
+ ||         | GND                               || GND     ||||+          +|||| D1      | 5                                 || DHT     ||
+ ||         | Reserved                          || VU      ||||+          +|||| D2      | 4                                 ||         ||
+ ||         | 10                                || SD3     ||||+     N    +|||| D3      | 0                                 || Button  ||
+ ||         | 9                                 || SD2     ||||+     o    +|||| D4      | 2                                 ||         ||
+ ||         | MOSI                              || SD1     ||||+     d    +|||| 3V3     | 3V3                               || DHT     ||
+ ||         | CS                                || CMD     ||||+     e    +|||| GND     | GND                               || DHT     ||
+ ||         | MISO                              || SDO     ||||+     M    +|||| D5      | 14                                ||         ||
+ ||         | SCLK                              || CLK     ||||+     C    +|||| D6      | 12                                ||         ||
+ ||         | GND                               || GND     ||||+     U    +|||| D7      | 13                                ||         ||
+ ||         | 3V3                               || 3V3     ||||+          +|||| D8      | 15                                ||         ||
+ ||         | EN                                || EN      ||||+          +|||| RX      | 3                                 ||         ||
+ ||         | RESET                             || RST     ||||+          +|||| TX      | 1                                 ||         ||
+ ||         | GND                               || GND     ||||+          +|||| GND     | GND                               ||         ||
+ ||         | Vin                               || Vin     ||||+          +|||| 3V3     | 3V3                               ||         ||
+ || used as | Arduino IDE (identical to esp8266)|| NodeMCU ||O--------------O|| NodeMCU | Arduino IDE (identical to esp8266)|| used as ||
+*/
