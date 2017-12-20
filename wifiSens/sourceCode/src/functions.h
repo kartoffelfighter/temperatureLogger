@@ -156,5 +156,13 @@ void sample() {
   Serial.print("humid: ");
   Serial.print(humidSample);
   Serial.println("%");
+  Serial.print(" Accu:");
+  Serial.print(accuSample);
+  Serial.println("mV");
 
+}
+
+
+void sleep() {
+  ESP.deepSleep((INTERVALL-1)*60);
 }
