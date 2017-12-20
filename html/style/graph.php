@@ -77,21 +77,20 @@ function curl_get($url, array $get = NULL, array $options = array())
                   }
 
 //                    var_dump($gets["sens"]);
-
               $json_sens = curl_get($link, $gets);
               $sens = json_decode($json_sens, true);
               if($sens["success"] == "true"){
                   echo "<h3>".$i . " Werte für " . $sensorNames[hexdec($gets["sens"])] . "  &nbsp;&nbsp;<small><code>ID:".$gets["sens"]."</code></small> </h3>";
                   $i = count($sens["data"]);
                   echo "<table class='table table-dark'><thead><tr><td></td></tr></thead><tbody>";
-                  echo "<b><tr><td>Messung</td><td>Temperatur</td><td>Feuchtigkeit</td><td>Datum</td><td>Kommentar</td></tr></b>";
+                  echo "<b><tr><td>Messung</td><td>Temperatur</td><td>Feuchtigkeit</td><td>Datum</td><td>Kommentar</td><td>Accuspannung</td></tr></b>";
                   for($ii = 0; $ii <= $i-1; $ii++){
                     echo "<tr>";
                     echo "<td>";
                     echo $sens["data"][$ii]["id"];
                     echo "</td>";
                     echo "<td>";
-                    echo hexdec($sens["data"][$ii]["temp"])/1000 . "°C";    // devide by 1000 (float in arduino!!)
+                    echo hexdec($sens["data"][$ii]["temp"])/1000-OFFSET . "°C";    // devide by 1000 (float in arduino!!), substrate the OFFSET
                     echo "</td>";
                     echo "<td>";
                     echo hexdec($sens["data"][$ii]["humid"])/1000 . "%";      // devide by 1000 (float in arduino!!)
