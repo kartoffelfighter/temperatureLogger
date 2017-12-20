@@ -51,13 +51,17 @@ bool sendValue(int action, float valueTemp, float valueHumid, int comment, float
       url += String(dbTemp, HEX);
       url += "\",\"humid\":\"";
       url += String(dbHumid, HEX);
-      url += "\",\"comment\":\"0x00\"}";   // comment will be the error handler in future
+      url += "\",\"comment\":\"";
+      url += hexcomment;
+      url += "\",\"accu\":\"";
+      url += String(dbAccu, HEX);
+      url += "\"}";   // comment will be the error handler in future
     break;
   }
 
   http.begin(SERVER_HOST, SERVER_PORT, url);
 
-  Serial.print("Sending query to Server: ");
+  Serial.println("Sending query to Server: ");
   Serial.println(url);
 
   int httpCode = http.GET();
