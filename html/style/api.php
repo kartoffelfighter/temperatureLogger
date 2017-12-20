@@ -106,11 +106,11 @@
       @<br>
       @------------------------------<br>
       @ Example Call:<br>
-      @ ?action=writeValue&data={"sensid":"0x001","temp":"0x014","humid":"0x063","comment":"0x00"}<br>
+      @ ?action=writeValue&data={"sensid":"0x001","temp":"0x014","humid":"0x063","comment":"0x00","accu":"0x00"}<br>
       @-----------------------<br>
       @json:<br>
       @ Post a value named "credits" by following template:<br>
-      @ {"sensid":"[HEX]0x001","temp":"[HEX]0x014","humid":"[HEX]0x063","comment":"[HEX]0x00"}<br>
+      @ {"sensid":"[HEX]0x001","temp":"[HEX]0x014","humid":"[HEX]0x063","comment":"[TEXT] hello","accu":"[HEX]0x00"}<br>
       @<br>
       @-------------------------<br>
       @ writeValue return a json string:<br>
