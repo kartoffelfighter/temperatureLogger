@@ -101,6 +101,14 @@ function curl_get($url, array $get = NULL, array $options = array())
                     echo "<td>";
                     echo $sens["data"][$ii]["comment"];
                     echo "</td>";
+                    echo "<td>";
+                    if(hexdec($sens["data"][$ii]["accu"]) <= 3900){
+                      echo "<div class=\"alert alert-danger\" role=\"alert\">".hexdec($sens["data"][$ii]["accu"])."mV</div>";
+                    }
+                    else {
+                      echo hexdec($sens["data"][$ii]["accu"])."mV";
+                    }
+                    echo "</td>";
                     echo "</tr>";
                   }
                   echo "</table";
