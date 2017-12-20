@@ -209,16 +209,9 @@ switch(filter_input(INPUT_GET, 'action')){    // API Calls
   break;
 
   case 'testing':                                             // test-case
-  $newUser["email"] = "test1@mail.com";
-  $newUser["password"] = "1234";
-  $newUser["name"] = "Testnutzer";
-  //var_dump($newUser);
-
-  // delete the user from testing first!
-  echo(deleteUser(json_encode($newUser)));
-  // generate the test-user!
-  $return = 0;
-  echo(generateNewUser(json_encode($newUser)));
+  $data = json_decode(filter_input(INPUT_GET, 'data'));
+  var_dump($data);
+  var_dump(getxy($data->sens, $data->value));
   break;
 
 }
