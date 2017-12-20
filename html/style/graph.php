@@ -9,8 +9,9 @@ $sensorNames = array (
   0x005 => "Balkon"
 );
 
-//define('ACTIVE_SENSORS','3');
-//var_dump($actual_link = "$_SERVER[REQUEST_URI]");
+define('OFFSET', '273.15');  // define the temperature offset (0K)
+
+$dataPoints = array();
 
 function curl_get($url, array $get = NULL, array $options = array())
 {
