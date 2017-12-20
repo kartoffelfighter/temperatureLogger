@@ -88,7 +88,7 @@ bool sendValue(int action, float valueTemp, float valueHumid, int comment, float
 
 
 void alive() {
-  Serial.println("5 minutes passed, see my information ");
+  Serial.println("i am alive");
   Serial.print("IP-Adress: ");
   Serial.println(WiFi.localIP());
   Serial.print("Runtime: ");
@@ -149,6 +149,7 @@ void sample() {
   }
   tempSample = tempTemp/iSample;
   humidSample = tempHumid/iSample;
+  accuSample = tempAccu/iSample;
   Serial.println("Sampled some temp and humid values");
   Serial.print("Temp: ");
   Serial.print(tempSample);
