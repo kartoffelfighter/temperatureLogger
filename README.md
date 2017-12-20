@@ -1,25 +1,42 @@
-Readme
-------
+temperatureLogger Firmware alphaV2
+-
 
-This Firmware Version (alphaV1) only complies with alphaV1 boards as the pinlayout has changed
+**Table of contents**
 
-**WARNING**: Untested behaviour with newer boards, do not flash. Use at own risk.
-
-included features in alphaV1:
-
- - wifi connection to network and handshaking with server to syncronize time
- - sample values and calculate the middle value of samples
- - Send values to server and handle error from server
- - run on battery pack
- - "i-am-alive" console returnings
- - ADC reading of battery packs voltage, no transmit and no use in firmware
- - complies with alphaV1 Server API
+ - Firmware description
+ - Function description
+ - New Functions
+ - Comparison
+ - Possibility for new milestone
 
 
----
-still no release ready.
+**Firmware description**
 
----
+temperatureLogger alphaV2 ist planned to be used for a temperature logging device based on esp8266.
+The device sends its measured values using a json string to a php server api to be stored and viewed from users. temperatureLogger alphaV2 uses the new and changing pcb-layout, alphaV2 is work in progress and may be not stable to use.
 
-Development of branch discontinued
----
+alphaV2 will be recoded to a tick based firmware powered by interrupts by timer0. 
+at this time alphaV2 runs millis() loop based, checking the lasted time running code, for the new sleep() function a tick based firmware is needed.
+
+**Function description**
+
+based on alphaV1 the firmware can already measure, sample and send values to the API (Server). 
+In future, the functions should be better described here.
+
+**New functions**
+in alphaV2 especially the error handling an the improvin of new hardware-designed milestone should be implemented.
+
+For future releases the should be a function to configure editable values from "settings.h" by API and interface.
+A ping-pong communication should be implemented
+
+
+**Comparison (to alphaV1)**
+
+alphaV1 is made for the old pcb layout, some pins have changed.
+alphaV2 has no more LCD support, also LCD support is not planned for the future.
+alphaV2 implements new features, as a multiplexed ADC input for measuring multiple Analog Values with just one ADC.
+*primary change* alphaV2 will be a tick (interrupt) based firmware for compatibility reasons to new boards in the future.
+
+
+**next milestone for alphaV3**
+the next milestone is planned for the first, etched pcb in january '18.
