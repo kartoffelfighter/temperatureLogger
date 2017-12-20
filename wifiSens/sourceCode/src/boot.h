@@ -7,18 +7,6 @@ String payload; // recieved Value from json library
 
 void boot() {
 if(!booted){
-  #if(LCD_Enabled == true)    //LCD Support temporary discontinued, as my lcd broke
-  LiquidCrystal lcd(LCD_RS, LCD_EN, LCD_D4, LCD_D5, LCD_D6, LCD_D7);    // Pin Config in pins.h
-  // set up the LCD's number of columns and rows:
-  lcd.begin(16, 2);
-  // Print a message to the LCD.
-  lcd.print(MSG_BOOT);
-  lcd.setCursor(1, 2);
-  lcd.print(MSG_BOOT_1);
-  #endif
-
-
-
   if(!connection){  // if wifi_connection is not already established
     Serial.println(MSG_BOOT);
     Serial.println(MSG_BOOT_1);
