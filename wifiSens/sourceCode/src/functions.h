@@ -35,6 +35,14 @@ bool sendValue(int action, float valueTemp, float valueHumid, int comment, float
 
   //url += "handshake";
 
+  switch(comment){
+    case '0':
+    hexcomment = "0";
+    case '1':
+    hexcomment = "0x001"; // Marker set
+    break;
+  }
+
   switch(action){
     case 0x00:
       url += "writeValue&data={\"sensid\":\"";
