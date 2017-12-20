@@ -122,17 +122,25 @@ void measure() {
   temperature = dht.getTemperature();
 }
 
+
+void analogMeasure(){
+  accu = (3.3/1024*analogRead(ADC))*2000;
+}
+
 void sample() {
   float tempTemp = 0;
   float tempHumid = 0;
+  float tempAccu = 0;
   int iSample = 0;
   millisBeginnSampling = millis();
   int millisSamplingRate = 0;
   while(millis() <= millisBeginnSampling + SAMPLES*1000){
     if(millis() >= millisSamplingRate + SAMPLE_RATE*1000){
       measure();
+      analogMeasure();
       tempTemp += temperature;
       tempHumid += humidity;
+      tempAccu += accu;
       iSample++;
       Serial.print("Sample nb. ");
       Serial.println(iSample, HEX);
