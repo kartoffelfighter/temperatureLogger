@@ -331,4 +331,21 @@ function readValue($data){
     }
 
   }
+
+  function getxy($sens, $value){
+    global $mysqllink;
+
+    $query = $mysqllink->query("SELECT * FROM `sens` WHERE `sensor` = '".$sens."' ");  // check, if user is existing
+
+    if($query->num_rows != 0){
+
+      while($found = $query->fetch_object()){
+        $founds[] = $found;
+      }
+      $return['success'] = "true";
+      $return['data'] = $founds;
+
+      return(json_encode($return));
+  }
+}
  ?>
