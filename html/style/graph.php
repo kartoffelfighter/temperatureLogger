@@ -133,8 +133,29 @@ function curl_get($url, array $get = NULL, array $options = array())
           </div>
           <div>
             <div class="w-row">
-              <div class="w-col w-col-6"><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg" class="image-4"></div>
-              <div class="w-col w-col-6"><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg" class="image-2"></div>
+              <div id="chartContainer"></div>
+<script type="text/javascript">
+$(function () {
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "theme2",
+	zoomEnabled: true,
+	animationEnabled: true,
+	title: {
+		text: "Temperature log"
+	},
+	subtitles:[
+		{   text: "(Try Zooming & Panning)" }
+	],
+	data: [
+	{
+		type: "line",
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}
+	]
+});
+chart.render();
+});
+</script>
             </div>
           </div>
         </div>
