@@ -9,14 +9,18 @@
 #define WakeUp 16 // NodeMCU: D0
 #define BUTTON 0 // NodeMCU: D3
 
+#define accuLoading 4 // NodeMCU: D2
+#define accuFull 2 // NodeMCU: D4
+
+
 /*
  Different pin configs:                                      _________________
  || used as | Arduino IDE (identical to esp8266)|| NodeMCU ||O--------------O|| NodeMCU | Arduino IDE (identical to esp8266)|| used as ||
  || ADC     | A0                                || A0      ||||+          +|||| D0      | 16                                || WakueUp ||
  ||         | GND                               || GND     ||||+          +|||| D1      | 5                                 || DHT     ||
- ||         | Reserved                          || VU      ||||+          +|||| D2      | 4                                 ||         ||
+ ||         | Reserved                          || VU      ||||+          +|||| D2      | 4                                 || Loading ||
  ||         | 10                                || SD3     ||||+     N    +|||| D3      | 0                                 || Button  ||
- ||         | 9                                 || SD2     ||||+     o    +|||| D4      | 2                                 ||         ||
+ ||         | 9                                 || SD2     ||||+     o    +|||| D4      | 2                                 || Full    ||
  ||         | MOSI                              || SD1     ||||+     d    +|||| 3V3     | 3V3                               || DHT     ||
  ||         | CS                                || CMD     ||||+     e    +|||| GND     | GND                               || DHT     ||
  ||         | MISO                              || SDO     ||||+     M    +|||| D5      | 14                                ||         ||
