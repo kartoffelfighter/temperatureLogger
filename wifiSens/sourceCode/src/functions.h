@@ -1,13 +1,28 @@
-
-
-/* sample call for sendValue()
-if(sendValue(0x00, 20, 100, 0x00)){
-  Serial.println("Success!!");
-} else {
-  Serial.println("I failed sending the test values!");
+bool debounce(int pin){     // feed with pin. Will block the prozessor for about 200mS
+  int BMillis;
+  int BBMillis = BMillis = millis();
+  int Breturn = 0;
+  while (BMillis + 200 <= millis()){
+      if(BBMillis + 10 >= millis()){
+        if(digitalRead(pin)) {Breturn++;}
+      }
+  }
+  if(Breturn >= 11){
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
-*/
+void wifiSetup() {
+  yield();
+}
+
+void readAccuLoad() {
+    AccuLoading = debounce(accuLoading);    //AccuLoading = set, if accuLoading pin is high
+    AccuFull = debounce(accuFull);          //AccuLoading = set, if accuLoading pin is high
+}
 
 
 bool sendValue(int action, float valueTemp, float valueHumid, int comment, float valueAccu){
