@@ -1,5 +1,5 @@
 bool booted = false;  // boot init script was done
-bool connection = false;    // WiFi Connection established
+//bool connection = false;    // WiFi Connection established || == WL_CONNECTED
 
 bool serverConnection = false;  // Server Connection established while booting ?
 
@@ -7,7 +7,7 @@ String payload; // recieved Value from json library
 
 void boot() {
 if(!booted){
-  if(!connection){  // if wifi_connection is not already established
+  if(!WL_CONNECTED){  // if wifi_connection is not already established
     Serial.println(MSG_BOOT);
     Serial.println(MSG_BOOT_1);
     Serial.print("Connecting to ");
@@ -21,15 +21,10 @@ if(!booted){
       Serial.print("."); //print every 1/2 second a "." to symbolize, we didn't hang up
     }
     Serial.println("Success");  // success if we connected
-    Serial.print("My IP Adress:");  // show IP-Adress
-    Serial.println(WiFi.localIP());
-    connection = true; // set connection to true
     }
   else {  // if wifi is already connected, but boot is called again
     Serial.println("WiFi already connected!");
-    Serial.println("my ip:  ");
-    Serial.println(WiFi.localIP());
-  }
+    }
   Serial.println("Handshaking with Server"); // handshaking with server to see if server is available
 
   /*@@@@@@@@@@@@@@@@@@@@@
@@ -95,7 +90,8 @@ if(!booted){
 
     }
   }
-
+  Serial.print("My IP Adress:");  // show IP-Adress
+  Serial.println(WiFi.localIP());
   Serial.print("booting took us exactly ");
   Serial.print(millis());
   Serial.println("mS!");
