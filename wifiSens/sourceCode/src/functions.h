@@ -133,6 +133,7 @@ void alive() {
 
 void measure() {
   //Serial.println("measure called");
+  delay(dht.getMinimumSamplingPeriod());
   humidity = dht.getHumidity();
   temperature = dht.getTemperature();
 }
