@@ -176,10 +176,84 @@ void sample() {
   Serial.print(" Accu:");
   Serial.print(accuSample);
   Serial.println("mV");
-
 }
 
 
 void sleep() {
   ESP.deepSleep((INTERVALL-1)*60);
+}
+
+
+bool writeSDheader(){
+  if(!sd.exists(MEASUREMENT_DIR)) {
+    sd.mkdir(MEASUREMENT_DIR);
+  }
+  String fileNameString = MEASUREMENT_DIR;
+  fileNameString += "/";
+  fileNameString += String(day(now()));
+  fileNameString += String(month(now()));
+  fileNameString += String(year(now()));
+  fileNameString += FILE_EXTENSION;
+  char fileName[fileNameString.length() +1];
+  fileNameString.toCharArray(fileName, fileNameString.length() +1 );
+  //char fileName[] = {day(now()), month(now()), year(now()), FILE_EXTENSION};
+  file.open(fileName, O_CREAT | O_WRITE | O_EXCL);
+  file.println(F("sep=,"));
+  file.println(F("Sensor,Uhrzeit,Temperatur,Feuchtigkeit,Kommentar,Akkuspannung"));
+  file.println();
+  Serial.println("wrote header");
+  Serial.print(F("new file name:"));
+  Serial.println(fileName);
+  return true;
+}
+
+
+bool writeSDValue(int action, float valueTemp, float valueHumid, int comment, float valueAccu){
+    String hexcomment;
+  	String valueString;
+
+    switch(comment){
+      case '0':
+      hexcomment = "0";
+      case '1':
+      hexcomment = "0x001"; // Marker set
+      break;
+    }
+
+    switch(action){
+      case 0x00:
+        valueString = SENSID;
+        valueString += ",";
+        valueString += year(now());
+        valueString += ".";
+        valueString += month(now());
+        valueString += ".";
+        valueString += day(now());
+        valueString += " ";
+        valueString += hour(now());
+        valueString += ":";
+        valueString += minute(now());
+        valueString += ",";
+        valueString += String(valueTemp);
+        valueString += ",";
+        valueString += String(valueHumid);
+        valueString += ",";
+        valueString += hexcomment;
+        valueString += ",";
+        valueString += String(valueAccu);
+      break;
+    }
+
+    String fileNameString = String(day(now()));
+    fileNameString += String(month(now()));
+    fileNameString += String(year(now()));
+    fileNameString += FILE_EXTENSION;
+    char fileName[fileNameString.length() +1];
+    fileNameString.toCharArray(fileName, fileNameString.length() +1 );
+    //char fileName[] = {day(now()), month(now()), year(now()), FILE_EXTENSION};
+    //file.open(fileName, O_CREAT | O_WRITE | O_EXCL);
+    file.println(valueString);
+    Serial.println("wrote values to SD");
+    return true;
+
 }
