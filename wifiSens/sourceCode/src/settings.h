@@ -1,7 +1,10 @@
-#define LCD_Enabled false
+#define WAITFORSERIAL false // debug information, waites to boot until serial monitor is connected
+#define USE_SD_CRC 0  // debug information for CRC Check
 
 #define SSID "Volks.Funk"
 #define WiFiPass "ungueltigeeingabe"
+
+#define SENSID "0x005"      // Note: The SENSID is also the HOST-Name!
 
 #define GMTplus 1 // time adjust plus the GMT in h
 
@@ -12,10 +15,8 @@
 #define SERVER_PORT 1337
 #define SERVER_BASE_URL "/temperatureLogger/html/api.php"
 
-#define SENSID "0x005"
 
-
-#define INTERVALL 1   // time in minuts between two measures
+#define INTERVALL 10   // time in minuts between two measures
 #define SAMPLE_RATE  5  // how often should measure be called while sampling
 #define SAMPLES 25 // Sampletime in Seconds before a value is valid
 
@@ -39,3 +40,11 @@ bool AccuLoading, AccuFull; // booleans for loading accu or accu full
 int lastMinute = 0;   // counter for status information
 int lastUpdateDay = 0;  // counter for updating time
 int lastMeasure = 0;  // counter for last measure
+
+SdFat sd;   // file system object (sd card)
+SdFile file; // file Name
+// Error messages stored in flash.
+#define error(msg) sd.errorHalt(F(msg))
+
+#define FILE_EXTENSION ".csv"   // file extension on logged data on sd card
+#define MEASUREMENT_DIR "values"    // directory where files will be placed
