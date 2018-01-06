@@ -1,3 +1,11 @@
+/*
+boot.h contains booting related functions and boot-function
+
+functions.h is needed here
+
+*/
+
+
 bool booted = false;     // boot init script was done
 bool connection = false; // WiFi Connection established || !== WL_CONNECTED
 
@@ -64,7 +72,7 @@ bool handshake()
         Serial.print(year(now()));
         Serial.println(" !");
 
-        lastRenew = longTime;
+        lastRenew = now();      // fixed bug, so last renew time was set to GMT standard unix time (early: lastRenew = longTime)
         return true;
       }
       else
@@ -92,15 +100,6 @@ if(!writeSDheader()) {
 
 
 
-
-
-
-
-
-
-
-
-
 void boot()
 {
 
@@ -109,9 +108,6 @@ void boot()
   while (!Serial) {
     SysCall::yield();
   }
-  delay(1000);
-
-  Serial.println(F("Type any character to start"));
   while (!Serial.available()) {
     SysCall::yield();
   }
