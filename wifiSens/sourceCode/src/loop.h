@@ -15,7 +15,6 @@ void cycle()
       {
         Serial.println("write to SD failed.");
       }
-      file.sync();
       lastMeasure = millis();
     }
 
@@ -34,6 +33,7 @@ void cycle()
     if (millis() - lastUpdateDay >= 24 * 60 * 60 * 1000)
     { // reinitialize after 1 Day
       //booted = false;
+      file.sync();
       file.close();
       if(writeSDheader()) {
         Serial.println(F("Created new file for today."));
