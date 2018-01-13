@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP DHT22
+D DHT22
+K DHT22 DHT21 DHT11 AMS2302
+$ENDCMP
+#
+#End Doc Library
