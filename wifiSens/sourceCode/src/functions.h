@@ -186,7 +186,7 @@ void sample()
       tempAccu += accu;
       iSample++;
       Serial.print("Sample nb. ");
-      Serial.println(iSample, DEC);0
+      Serial.println(iSample, DEC);
     }
   }
   tempSample = tempTemp / iSample;
