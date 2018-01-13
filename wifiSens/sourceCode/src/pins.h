@@ -7,14 +7,21 @@
 #define DHT_DATA_PIN 5 //NodeMCU: D1
 
 #define WakeUp 16 // NodeMCU: D0
-//#define BUTTON 0 // NodeMCU: D3
+#define BUTTON 0 // NodeMCU: D3
 
-#define accuLoading 0 // NodeMCU: D6
-#define accuFull 2 // NodeMCU: D4
+#define accuLoading CHRG 
+#define accuFull STDBY 
 
 #define POWER_SOURCE 14 // NodeMCU: D5
 #define SD_CS 15    // NodeMCU D2
 
+#define SD_DETECT       // pin on SD Card, gets HIGH if SD Card is inserted
+
+#define LOAD_EN         // pin on BatteryLoader, set to high to start loading
+#define CHRG            // pin on BetteryLoader, becomes low while loading
+#define STDBY           // pin on BatteryLoader, becomes low if battery full
+
+#define ONOFF           // signal to turn on LDO chip
 
 /*
  Different pin configs:                                      _________________
