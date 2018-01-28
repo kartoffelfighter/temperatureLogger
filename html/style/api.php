@@ -12,6 +12,8 @@
       <li class="list-group-item"><a href="#writeValue">writeValue</a></li>
       <li class="list-group-item"><a href="#readValue">readValue</a></li>
       <li class="list-group-item"><a href="#handshake">handshake</a></li>
+      <li class="list-group-item"><a href="#getConfig">getConfig</a></li>
+      <li class="list-group-item"><a href="#modifyConfig">modifyConfig</a></li>
     </ul>
   </div>
   <div class="card" id="errorcodes">
@@ -162,6 +164,67 @@
       @ json return string format:<br>
       @ {"success":"true","time":"1512751312"}<br>
       @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<br>
+    </code>
+  </div>
+</div>
+<div class="card" id="getConfig">
+  <div class="card-header">
+    <h3>getConfig</h3>
+  </div>
+  <div class="card-body">
+    <code>
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<br>
+    @     getConfig API Call<br>
+    @-----------------------------<br>
+    @ getConfig handles calls from clients.<br>
+    @<br>
+    @------------------------------<br>
+    @ Example Call:<br>
+    @ ?action=getConfig&data=offset<br>
+    @-----------------------<br>
+    @ blank/html _GET<br>
+    @-------------------------<br>
+    @ getConfig return a json string:<br>
+    @<br>
+    @ {"success":"true", "data":"273.15"}<br>
+    @<br>
+    @-------------------------<br>
+    @ possible keys:<br>
+    @<br>
+    @ - OFFSET -> will return the user defined offset to temperature<br>
+    @ - Sensors -> will return json string with "sensorID"->"SensorName"<br>
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<br>
+    </code>
+  </div>
+</div>
+<div class="card" id="getConfig">
+  <div class="card-header">
+    <h3>modifyConfig</h3>
+  </div>
+  <div class="card-body">
+    <code>
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<br>
+    @     modifyConfig API Call<br>
+    @-----------------------------<br>
+    @ modifyConfig handles calls from clients.<br>
+    @<br>
+    @------------------------------<br>
+    @ Example Call:<br>
+    @ ?action=modifyConfig&data=offset&value=100<br>
+    @ ?action=modifyConfig&data=sensors&value={json-string}<br>
+    @-----------------------<br>
+    @ blank/html _GET<br>
+    @-------------------------<br>
+    @ modifyConfig returns a json string:<br>
+    @<br>
+    @ {"success":"true"}<br>
+    @<br>
+    @-------------------------<br>
+    @ possible keys:<br>
+    @<br>
+    @ - OFFSET -> will return the user defined offset to temperature<br>
+    @ - Sensors -> will return json string with "sensorID"->"SensorName"<br>
+    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<br>
     </code>
   </div>
 </div>

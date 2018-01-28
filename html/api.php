@@ -47,7 +47,7 @@ $datadebug = new stdClass();
 
 // check for the api-key
 if(filter_input(INPUT_GET, 'key') != API_KEY ){
-  if(filter_input(INPUT_POST, 'data') != API_KEY){
+  if(filter_input(INPUT_POST, 'key') != API_KEY){
   $return['success'] = "false";   // prepare error string
   $return['errorcode'] = "0";
   $return['description'] = "falscher api key";
@@ -208,6 +208,31 @@ switch(filter_input(INPUT_GET, 'action')){    // API Calls
   echo json_encode($handshake);
   break;
 
+  /*
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  @     getConfig API Call
+  @-----------------------------
+  @ getConfig handles calls from clients.
+  @
+  @------------------------------
+  @ Example Call:
+  @ ?action=getConfig&data=offset
+  @-----------------------
+  @ blank/html _GET
+  @-------------------------
+  @ writeValue return a json string:
+  @
+  @ {"success":"true", "data":"273.15"}
+  @
+  @
+  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  */
+
+  case "getconfig":
+  $data = filter_input(INPUT_GET, 'data');
+  echo(getConfig($data));
+  break;
+
   case 'testing':                                             // test-case
   $data = json_decode(filter_input(INPUT_GET, 'data'));
   var_dump($data);
@@ -347,5 +372,45 @@ function readValue($data){
 
       return(json_encode($return));
   }
+}
+
+
+
+function getConfig($key) {   // insert key, will return information from database
+  global $mysqllink;
+  $query = $mysqllink->query("SELECT `value` FROM `config` WHERE `cKey` = '".$key."' ");  // check, if user is existing
+  if($query->num_rows != 0){
+
+    while($found = $query->fetch_object()){
+      $founds[] = $found;
+    }
+    //var_dump($founds);
+    $return['success'] = "true";
+    $return['data'] = $founds[0]->value;  // return is a array containig the class "value"
+
+    return(json_encode($return));
+} else {
+  $return['success'] = "false";
+  $return['description'] = "No such config key!";
+}
+}
+
+
+
+
+function modifyConfig($key, $value) {
+  global $mysqllink;
+  
+  $query = $mysqllink->query("SELECT * FROM `sens` WHERE `sensor` = '".$sens."' ");  // check, if user is existing
+  if($query->num_rows != 0){
+
+    while($found = $query->fetch_object()){
+      $founds[] = $found;
+    }
+    $return['success'] = "true";
+    $return['data'] = $founds;
+
+    return(json_encode($return));
+}
 }
  ?>
