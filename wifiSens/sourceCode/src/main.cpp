@@ -7,7 +7,7 @@
 #include <SdFat.h>                // SD-Card
 #include <ArduinoJson.h>       // JSON Library
 #include <TimeLib.h>           // Time library
-#include <dht.h>               // DHT Sensor Library
+#include <DHT.h>               // DHT Sensor Library
 #include <ArduinoOTA.h>        // OTA Update library
 
 #include "settings.h"  //settings file

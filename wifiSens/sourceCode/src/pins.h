@@ -15,13 +15,13 @@
 #define POWER_SOURCE 14 // NodeMCU: D5
 #define SD_CS 15    // NodeMCU D2
 
-#define SD_DETECT       // pin on SD Card, gets HIGH if SD Card is inserted
+#define SD_DETECT 11      // pin on SD Card, gets HIGH if SD Card is inserted
 
-#define LOAD_EN         // pin on BatteryLoader, set to high to start loading
-#define CHRG            // pin on BetteryLoader, becomes low while loading
-#define STDBY           // pin on BatteryLoader, becomes low if battery full
+#define LOAD_EN 15        // pin on BatteryLoader, set to high to start loading
+#define CHRG 4           // pin on BetteryLoader, becomes low while loading
+#define STDBY 2          // pin on BatteryLoader, becomes low if battery full
 
-#define ONOFF           // signal to turn on LDO chip
+#define ONOFF 7          // signal to turn on LDO chip
 
 /*
  Different pin configs:                                      _________________

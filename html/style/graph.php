@@ -105,14 +105,13 @@ $sens = json_decode($json_sens);
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
-              <tr><th>Messung</th><th>Temperatur</th><th>Feuchtigkeit</th><th>Datum</th><th>Kommentar</th><th>Accuspannung</th></tr>
+              <tr><th>Messung</th><th>SensorID</th><th>Temperatur</th><th>Feuchtigkeit</th><th>Datum</th><th>Kommentar</th><th>Accuspannung</th></tr>
               </thead>
               <tbody>
                 <?php
                   foreach($sens->data as $row) {
                     echo "<tr>";
                     $unit = NULL;
-                    $comment = NULL;
                     foreach($row as $key => $val){        // decode HEX and Time from received json
                       switch($key){
                         case "temp":
@@ -137,16 +136,20 @@ $sens = json_decode($json_sens);
                         if($val <= 3900) {$comment =  "<span class='badge badge-danger'>Danger</span>";}
                         $unit = "mV";
                         break;
+                        case "comment":
+                        $val = $comment;
+                        $comment = NULL;
+                        break;
                         case "time":
                         $unit = NULL;
                         break;
                       }
-                      echo "<td>" . $val . $unit . $comment . "<td>";
+                      echo "<td>" . $val . $unit . "</td>";
                     }
                     echo "</tr>";
 }
   }
-              } else {
+               else {
                 echo "<h3> Für&nbsp;" . $sensorNames[hexdec($gets["sens"])] . "  <small><code>ID:".$gets["sens"]."</code></small> sind keine Werte verfügbar! </h3>";
                 echo "<div class='alert alert-danger'>Fehler: ";
                 switch($sens->errorcode){

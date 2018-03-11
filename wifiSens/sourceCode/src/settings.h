@@ -11,7 +11,7 @@
 #define WiFiPass "ungueltigeeingabe"
 
 // ===== Server Connection in push mode =====
-#define SENSID "0x005"      // Note: The SENSID is also the HOST-Name! (Host-Name: SENS[SENSID].local)
+#define SENSID "0x002"      // Note: The SENSID is also the HOST-Name! (Host-Name: SENS[SENSID].local)
 #define GMTplus 1 // time adjust plus the GMT in h
 #define API_KEY "FucK4sch001"
 #define SERVER_ADDR "http://kruemel:1337/temperatureLogger/html/api.php"

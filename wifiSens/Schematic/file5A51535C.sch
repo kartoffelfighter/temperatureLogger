@@ -28,7 +28,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:ESP8266
 LIBS:wifiSens
 LIBS:switches
 LIBS:pl2303
