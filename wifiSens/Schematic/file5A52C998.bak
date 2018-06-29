@@ -1,0 +1,308 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:ESP8266
+LIBS:wifiSens
+LIBS:switches
+LIBS:pl2303
+LIBS:schematics-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 7 7
+Title "temperatureLogger - user interaction"
+Date "Jan 2018"
+Rev "0"
+Comp "Marc"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L SW_Push SW1
+U 1 1 5A52C9A2
+P 2550 3850
+F 0 "SW1" H 2600 3950 50  0000 L CNN
+F 1 "SW_Push" H 2550 3790 50  0000 C CNN
+F 2 "Buttons_Switches_SMD:SW_MEC_5GSH9" H 2550 4050 50  0001 C CNN
+F 3 "" H 2550 4050 50  0001 C CNN
+	1    2550 3850
+	0    1    1    0   
+$EndComp
+$Comp
+L R R28
+U 1 1 5A52C9E8
+P 2300 2450
+F 0 "R28" V 2380 2450 50  0000 C CNN
+F 1 "470" V 2300 2450 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2230 2450 50  0001 C CNN
+F 3 "" H 2300 2450 50  0001 C CNN
+	1    2300 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R29
+U 1 1 5A52CA01
+P 2300 3300
+F 0 "R29" V 2380 3300 50  0000 C CNN
+F 1 "0r0" V 2300 3300 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2230 3300 50  0001 C CNN
+F 3 "" H 2300 3300 50  0001 C CNN
+	1    2300 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R30
+U 1 1 5A52CA1C
+P 2800 3300
+F 0 "R30" V 2880 3300 50  0000 C CNN
+F 1 "470" V 2800 3300 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 2730 3300 50  0001 C CNN
+F 3 "" H 2800 3300 50  0001 C CNN
+	1    2800 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R31
+U 1 1 5A52CA3D
+P 4050 3300
+F 0 "R31" V 4130 3300 50  0000 C CNN
+F 1 "470" V 4050 3300 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 3980 3300 50  0001 C CNN
+F 3 "" H 4050 3300 50  0001 C CNN
+	1    4050 3300
+	1    0    0    -1  
+$EndComp
+$Comp
+L SW_Push SW2
+U 1 1 5A52CA5C
+P 4050 3850
+F 0 "SW2" H 4100 3950 50  0000 L CNN
+F 1 "SW_Push" H 4050 3790 50  0000 C CNN
+F 2 "Buttons_Switches_SMD:SW_MEC_5GSH9" H 4050 4050 50  0001 C CNN
+F 3 "" H 4050 4050 50  0001 C CNN
+	1    4050 3850
+	0    1    1    0   
+$EndComp
+$Comp
+L LED D6
+U 1 1 5A52CAE9
+P 2300 2850
+F 0 "D6" H 2300 2950 50  0000 C CNN
+F 1 "LED" H 2300 2750 50  0000 C CNN
+F 2 "LEDs:LED_0805_HandSoldering" H 2300 2850 50  0001 C CNN
+F 3 "" H 2300 2850 50  0001 C CNN
+	1    2300 2850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L +3.3V #PWR057
+U 1 1 5A52CD12
+P 2300 2050
+F 0 "#PWR057" H 2300 1900 50  0001 C CNN
+F 1 "+3.3V" H 2300 2190 50  0000 C CNN
+F 2 "" H 2300 2050 50  0001 C CNN
+F 3 "" H 2300 2050 50  0001 C CNN
+	1    2300 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR058
+U 1 1 5A52CD34
+P 2550 4300
+F 0 "#PWR058" H 2550 4050 50  0001 C CNN
+F 1 "GND" H 2550 4150 50  0000 C CNN
+F 2 "" H 2550 4300 50  0001 C CNN
+F 3 "" H 2550 4300 50  0001 C CNN
+	1    2550 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR059
+U 1 1 5A52CD56
+P 4050 4300
+F 0 "#PWR059" H 4050 4050 50  0001 C CNN
+F 1 "GND" H 4050 4150 50  0000 C CNN
+F 2 "" H 4050 4300 50  0001 C CNN
+F 3 "" H 4050 4300 50  0001 C CNN
+	1    4050 4300
+	1    0    0    -1  
+$EndComp
+Text GLabel 4300 3050 2    60   Input ~ 0
+GPIO0
+Text GLabel 2000 3050 0    60   Input ~ 0
+GPIO16
+Text GLabel 3000 3050 2    60   Input ~ 0
+nRST
+Wire Wire Line
+	2300 2050 2300 2300
+Wire Wire Line
+	2300 2600 2300 2700
+Wire Wire Line
+	2300 3000 2300 3150
+Wire Wire Line
+	2000 3050 2300 3050
+Connection ~ 2300 3050
+Wire Wire Line
+	2800 3150 2800 3050
+Wire Wire Line
+	2800 3050 3000 3050
+Wire Wire Line
+	2300 3450 2300 3500
+Wire Wire Line
+	2300 3500 2800 3500
+Wire Wire Line
+	2800 3500 2800 3450
+Wire Wire Line
+	2550 3650 2550 3500
+Connection ~ 2550 3500
+Wire Wire Line
+	2550 4050 2550 4300
+Wire Wire Line
+	4300 3050 4050 3050
+Wire Wire Line
+	4050 3050 4050 3150
+Wire Wire Line
+	4050 3450 4050 3650
+Wire Wire Line
+	4050 4050 4050 4300
+$Comp
+L R R33
+U 1 1 5A52D216
+P 6900 2400
+F 0 "R33" V 6980 2400 50  0000 C CNN
+F 1 "220k" V 6900 2400 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 6830 2400 50  0001 C CNN
+F 3 "" H 6900 2400 50  0001 C CNN
+	1    6900 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R34
+U 1 1 5A52D23F
+P 6900 2900
+F 0 "R34" V 6980 2900 50  0000 C CNN
+F 1 "100k" V 6900 2900 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 6830 2900 50  0001 C CNN
+F 3 "" H 6900 2900 50  0001 C CNN
+	1    6900 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R32
+U 1 1 5A52D32B
+P 6550 2200
+F 0 "R32" V 6630 2200 50  0000 C CNN
+F 1 "330k" V 6550 2200 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 6480 2200 50  0001 C CNN
+F 3 "" H 6550 2200 50  0001 C CNN
+	1    6550 2200
+	0    1    1    0   
+$EndComp
+$Comp
+L R R35
+U 1 1 5A52D356
+P 7250 2200
+F 0 "R35" V 7330 2200 50  0000 C CNN
+F 1 "100k" V 7250 2200 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 7180 2200 50  0001 C CNN
+F 3 "" H 7250 2200 50  0001 C CNN
+	1    7250 2200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6700 2200 7100 2200
+Connection ~ 6900 2200
+$Comp
+L +BATT #PWR060
+U 1 1 5A52D3D0
+P 6150 2150
+F 0 "#PWR060" H 6150 2000 50  0001 C CNN
+F 1 "+BATT" H 6150 2290 50  0000 C CNN
+F 2 "" H 6150 2150 50  0001 C CNN
+F 3 "" H 6150 2150 50  0001 C CNN
+	1    6150 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR061
+U 1 1 5A52D47D
+P 6900 3150
+F 0 "#PWR061" H 6900 2900 50  0001 C CNN
+F 1 "GND" H 6900 3000 50  0000 C CNN
+F 2 "" H 6900 3150 50  0001 C CNN
+F 3 "" H 6900 3150 50  0001 C CNN
+	1    6900 3150
+	1    0    0    -1  
+$EndComp
+Text GLabel 7100 2650 2    60   Input ~ 0
+ADC
+Wire Wire Line
+	6150 2150 6150 2200
+Wire Wire Line
+	6150 2200 6400 2200
+Wire Wire Line
+	7100 2650 6900 2650
+Connection ~ 6900 2650
+Wire Wire Line
+	6900 3050 6900 3150
+$Comp
+L GND #PWR062
+U 1 1 5A52D5B7
+P 7550 3100
+F 0 "#PWR062" H 7550 2850 50  0001 C CNN
+F 1 "GND" H 7550 2950 50  0000 C CNN
+F 2 "" H 7550 3100 50  0001 C CNN
+F 3 "" H 7550 3100 50  0001 C CNN
+	1    7550 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7400 2200 7550 2200
+Wire Wire Line
+	7550 2200 7550 3100
+Wire Wire Line
+	6900 2000 6900 2250
+Wire Wire Line
+	6900 2550 6900 2750
+$Comp
+L TEST TP4
+U 1 1 5A52D6FB
+P 6900 2000
+F 0 "TP4" H 6900 2300 50  0000 C BNN
+F 1 "ADC" H 6900 2250 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch1.00mm" H 6900 2000 50  0001 C CNN
+F 3 "" H 6900 2000 50  0001 C CNN
+	1    6900 2000
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
